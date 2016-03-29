@@ -13,9 +13,10 @@ require('log-timestamp');
 socket.on('disconnect', function(){
     console.log('user disconnected');
     require('log-timestamp');
+});
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
-  });
+ 
   });
 });
 
