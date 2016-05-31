@@ -7,8 +7,16 @@ app.get('/', function(req, res){
 });
 
 io.on('connection', function(socket){
+  socket.broadcast.emit('hi');
+  console.log('new user connected');
+require('log-timestamp');
+socket.on('disconnect', function(){
+    console.log('user disconnected');
+    require('log-timestamp');
+});
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
+ 
   });
 });
 
